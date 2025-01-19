@@ -5,13 +5,13 @@ import styles from "./style.module.css"
 
 export default function SubscriberPage() {
 
-const API_KEY = import.meta.env.YOUTUBE_API_KEY;
+const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 const CHANNEL_ID = "UCZYQ9SOiYqJ4NgZva3M8GAg";
 
     // Define types for YouTube API response
-const REFRESH_INTERVAL = import.meta.env.REFRESH_INTERVAL || 60000
-const TITLE_MILESTONE = import.meta.env.TITLE_SUBSCRIBER_MILESTONE
-const TARGET_MILESTONE = import.meta.env.TARGET_SUBSCRIBER_MILESTONE
+const REFRESH_INTERVAL = import.meta.env.VITE_REFRESH_INTERVAL || 60000
+const TITLE_MILESTONE = import.meta.env.VITE_TITLE_SUBSCRIBER_MILESTONE
+const TARGET_MILESTONE = import.meta.env.VITE_TARGET_SUBSCRIBER_MILESTONE
 
 interface YouTubeAPIResponse {
     items?: {
@@ -47,9 +47,9 @@ interface YouTubeAPIResponse {
    // Auto-refresh using setInterval
    createEffect(() => {
     fetchSubscriberCount(); // Fetch immediately on component mount
-    // const interval = setInterval(fetchSubscriberCount, REFRESH_INTERVAL);
+    const interval = setInterval(fetchSubscriberCount, REFRESH_INTERVAL);
 
-    // onCleanup(() => clearInterval(interval)); // Clear interval on component unmount
+    onCleanup(() => clearInterval(interval)); // Clear interval on component unmount
   });
 
   return  <div class={styles.wrapper}>

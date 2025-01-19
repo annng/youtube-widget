@@ -12,7 +12,6 @@ const App: Component = () => {
     <Router>
       <Route path="/" component={HomePage}/>
       <Route path="/subscriber" component={SubscriberPage}/>
-
       <Route path="*paramName" component={NotFound} />
     </Router>
   )

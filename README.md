@@ -33,3 +33,7 @@ Your app is ready to be deployed!
 
 You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
 # youtube-widget
+
+### additional command  
+`npm i solid-start-vercel`
+`npm install @solidjs/route`

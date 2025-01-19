@@ -7,6 +7,8 @@ export default function SubscriberPage() {
 
     // Define types for YouTube API response
 const REFRESH_INTERVAL = import.meta.env.REFRESH_INTERVAL || 60000
+const TITLE_MILESTONE = import.meta.env.TITLE_SUBSCRIBER_MILESTONE
+const TARGET_MILESTONE = import.meta.env.TARGET_SUBSCRIBER_MILESTONE
 
 interface YouTubeAPIResponse {
     items?: {
@@ -24,7 +26,6 @@ interface YouTubeAPIResponse {
 
     // Function to fetch subscriber count
   const fetchSubscriberCount = async (): Promise<void> =>   {
-    console.log(REFRESH_INTERVAL)
     try {
         const response = await fetch(`/api/subscriber`);
         const data = await response.json();
@@ -40,19 +41,17 @@ interface YouTubeAPIResponse {
 
    // Auto-refresh using setInterval
    createEffect(() => {
-    // fetchSubscriberCount(); // Fetch immediately on component mount
+    fetchSubscriberCount(); // Fetch immediately on component mount
     // const interval = setInterval(fetchSubscriberCount, REFRESH_INTERVAL);
 
     // onCleanup(() => clearInterval(interval)); // Clear interval on component unmount
   });
 
   return  <div class={styles.wrapper}>
-  <h1>YouTube Subscriber Count</h1>
-  <MilestoneProgress title= "Update Mic" current_progress={3000} total_progress={1000}/>
   {error() ? (
     <p style={{ color: "red" }}>Error: {error()}</p>
   ) : subscriberCount() ? (
-    <MilestoneProgress title= "Update Mic" current_progress={3000} total_progress={1000}/>
+    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(subscriberCount)} total_progress={TARGET_MILESTONE}/>
   ) : (
     <p>Loading...</p>
   )}

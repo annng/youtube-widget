@@ -7,6 +7,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
+    "vercel-dev": "vercel dev",
     "serve": "vite preview"
   },
   "license": "MIT",
@@ -20,7 +21,6 @@
     "@solidjs/router": "^0.15.3",
     "@solidjs/start": "^1.0.11",
     "@vercel/node": "^4.0.0",
-    "solid-js": "^1.9.3",
-    "vinxi": "^0.4.3"
+    "solid-js": "^1.9.3"
   }
 }

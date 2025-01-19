@@ -5,6 +5,9 @@ import styles from "./style.module.css"
 
 export default function SubscriberPage() {
 
+const API_KEY = import.meta.env.YOUTUBE_API_KEY;
+const CHANNEL_ID = "UCZYQ9SOiYqJ4NgZva3M8GAg";
+
     // Define types for YouTube API response
 const REFRESH_INTERVAL = import.meta.env.REFRESH_INTERVAL || 60000
 const TITLE_MILESTONE = import.meta.env.TITLE_SUBSCRIBER_MILESTONE
@@ -27,7 +30,9 @@ interface YouTubeAPIResponse {
     // Function to fetch subscriber count
   const fetchSubscriberCount = async (): Promise<void> =>   {
     try {
-        const response = await fetch(`/api/subscriber`);
+        const response = await fetch(
+            `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`
+          );
         const data = await response.json();
         const count = data.items?.[0]?.statistics?.subscriberCount;
       setSubscriberCount(count || "0");

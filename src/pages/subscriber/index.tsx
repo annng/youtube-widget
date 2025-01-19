@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import { createSignal, createEffect, onCleanup } from "solid-js";
+import { createSignal, createEffect, onCleanup, createMemo } from "solid-js";
 import MilestoneProgress from "../../component/milestone/milestone_bar";
 import styles from "./style.module.css"
 
@@ -11,7 +11,7 @@ const CHANNEL_ID = "UCZYQ9SOiYqJ4NgZva3M8GAg";
     // Define types for YouTube API response
 const REFRESH_INTERVAL = import.meta.env.VITE_REFRESH_INTERVAL || 60000
 const TITLE_MILESTONE = import.meta.env.VITE_TITLE_SUBSCRIBER_MILESTONE
-const TARGET_MILESTONE = import.meta.env.VITE_TARGET_SUBSCRIBER_MILESTONE
+const TARGET_MILESTONE = import.meta.env.VITE_TARGET_SUBSCRIBER_MILESTONE || 0
 
 interface YouTubeAPIResponse {
     items?: {
@@ -24,8 +24,11 @@ interface YouTubeAPIResponse {
     };
   }
   
-    const [subscriberCount, setSubscriberCount] = createSignal<string | null>(null);
+    const [subscriberCount, setSubscriberCount] = createSignal<string | "0">("0");
     const [error, setError] = createSignal<string | null>(null);
+
+    const memoizedCurrentProgress = createMemo(() => subscriberCount());
+
 
     // Function to fetch subscriber count
   const fetchSubscriberCount = async (): Promise<void> =>   {
@@ -38,6 +41,7 @@ interface YouTubeAPIResponse {
       setSubscriberCount(count || "0");
       setError(null);
     } catch (err) {
+        console.log(err)
         const errorMessage = err instanceof Error ? err.message : "An error occurred";
       setError(errorMessage);
       console.log(errorMessage);
@@ -56,7 +60,7 @@ interface YouTubeAPIResponse {
   {error() ? (
     <p style={{ color: "red" }}>Error: {error()}</p>
   ) : subscriberCount() ? (
-    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(subscriberCount)} total_progress={TARGET_MILESTONE}/>
+    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(memoizedCurrentProgress())} total_progress={TARGET_MILESTONE}/>
   ) : (
     <p>Loading...</p>
   )}

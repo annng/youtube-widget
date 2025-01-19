@@ -35,7 +35,7 @@ interface YouTubeAPIResponse {
     } catch (err) {
         const errorMessage = err instanceof Error ? err.message : "An error occurred";
       setError(errorMessage);
-      console.error(err);
+      console.log(errorMessage);
     }
   };
 

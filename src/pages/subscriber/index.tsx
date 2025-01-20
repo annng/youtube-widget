@@ -60,7 +60,7 @@ interface YouTubeAPIResponse {
   {error() ? (
     <p style={{ color: "red" }}>Error: {error()}</p>
   ) : subscriberCount() ? (
-    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(memoizedCurrentProgress())} total_progress={TARGET_MILESTONE}/>
+    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(subscriberCount())} total_progress={TARGET_MILESTONE}/>
   ) : (
     <p>Loading...</p>
   )}

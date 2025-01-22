@@ -18,7 +18,7 @@ const MilestoneProgress: Component<MilestoneProgressProps> = (props) => {
   
   return (
     <div class={styles.container}>
-      <h2>{props.title}</h2>
+      <h2 class={styles["title-progress-bar"]}>{props.title}</h2>
       <div
         class={styles["container-bar"]}>
         <div

@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import { batch, Component } from "solid-js";
 import { createSignal, createEffect, onCleanup, createMemo } from "solid-js";
 import MilestoneProgress from "../../component/milestone/milestone_bar";
 import styles from "./style.module.css"
@@ -13,17 +13,7 @@ const REFRESH_INTERVAL = import.meta.env.VITE_REFRESH_INTERVAL || 60000
 const TITLE_MILESTONE = import.meta.env.VITE_TITLE_SUBSCRIBER_MILESTONE
 const TARGET_MILESTONE = import.meta.env.VITE_TARGET_SUBSCRIBER_MILESTONE || 0
 
-interface YouTubeAPIResponse {
-    items?: {
-      statistics?: {
-        subscriberCount?: string;
-      };
-    }[];
-    error?: {
-      message: string;
-    };
-  }
-  
+
     const [subscriberCount, setSubscriberCount] = createSignal<string | "0">("0");
     const [error, setError] = createSignal<string | null>(null);
 
@@ -39,6 +29,7 @@ interface YouTubeAPIResponse {
         const data = await response.json();
         const count = data.items?.[0]?.statistics?.subscriberCount;
       setSubscriberCount(count || "0");
+      console.log("total count", count)
       setError(null);
     } catch (err) {
         console.log(err)
@@ -47,6 +38,10 @@ interface YouTubeAPIResponse {
       console.log(errorMessage);
     }
   };
+
+  const memoCount : string = createMemo(() => {
+    return subscriberCount()
+  })
 
    // Auto-refresh using setInterval
    createEffect(() => {
@@ -60,7 +55,7 @@ interface YouTubeAPIResponse {
   {error() ? (
     <p style={{ color: "red" }}>Error: {error()}</p>
   ) : subscriberCount() ? (
-    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(subscriberCount())} total_progress={TARGET_MILESTONE}/>
+    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(memoCount())} total_progress={TARGET_MILESTONE}/>
   ) : (
     <p>Loading...</p>
   )}

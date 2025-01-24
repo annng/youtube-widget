@@ -11,7 +11,8 @@
   }
 
   .title-progress-bar {
-    text-shadow: 0 0 4px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
+    font-size: 1.5rem;
+    text-shadow: 0 0 4px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
   }
 
 .inactive-progress-bar {
@@ -29,8 +30,8 @@
 }
 
 .progress-text {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 800;
     margin-top: 0.5rem;
-    text-shadow: 0 0 4px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
+    text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
   }

@@ -7,16 +7,51 @@
     animation: run 0.8s steps(7) infinite;
 }
 
+.wrapper_info_chat{
+
+}
+
 .chat_bubble{
     border-radius: 50px;
     background-color: black;
     max-width: 150px;
     color: aliceblue;
+  
     p {
-        margin-left: 2rem;
-        margin-right: 2rem;
+        font-family: Pixelate;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+                line-clamp: 2; 
+        -webkit-box-orient: vertical;
     }
 }
+
+.wrapper_name_user{
+  
+  h2 {
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-left: 0px;
+    text-align: center;
+    margin-right: 0px;
+    font-family: Pixelate;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+  }
+}
+
+
 
 @keyframes run {
     0% {

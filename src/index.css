@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: Pixelate; /*a name to be used later*/
+  src: url('./assets/font/sf_pixelate/SF_Pixelate.ttf') format('truetype'); /*URL to font*/
+}
+
+@font-face {
+  font-family: Pixelate; /*a name to be used later*/
+  src: url('./assets/font/sf_pixelate/SF_Pixelate_Bold.ttf') format('truetype');
+  font-weight: bold;
+}

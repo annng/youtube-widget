@@ -51,22 +51,28 @@ export default function Sprite(props : SpriteProps) {
   });
   
     return (
-      <div class={styles.wrapper}>
+      <div class={styles.wrapper}
+      style={{
+        position: "absolute",
+          left: `${x()}px`,
+          top: "45px",
+      }}>
+      <div class={styles.wrapper_info_chat}>
         <div class={styles.chat_bubble}
-        style={{
-          position: "absolute",
-          top: "10px",
-        left: `${(x())}px`}}
+        
         >
           <p>Hai Guys apa kabar</p>
         </div>
+        <div class={styles.wrapper_name_user}
+      
+        >
+          <h2>Admin 001</h2>
+        </div>
+      </div>
         <div
           id={`sprite-${props.key}`}
           class={styles.runner}
           style={{
-            position: "absolute",
-          left: `${x()}px`,
-          top: "45px",
           width: "126px",
           height: "126px",
           background: `url(${props.image}) no-repeat`,

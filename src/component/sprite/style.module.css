@@ -1,0 +1,28 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.runner{
+    animation: run 0.8s steps(7) infinite;
+}
+
+.chat_bubble{
+    border-radius: 50px;
+    background-color: black;
+    max-width: 150px;
+    color: aliceblue;
+    p {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+@keyframes run {
+    0% {
+      background-position: 0 ;
+    }
+    100% {
+      background-position: -896px; /* Matches background-size to loop frames */
+    }
+  }

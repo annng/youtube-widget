@@ -39,10 +39,6 @@ const TARGET_MILESTONE = import.meta.env.VITE_TARGET_SUBSCRIBER_MILESTONE || 0
     }
   };
 
-  const memoCount : string = createMemo(() => {
-    return subscriberCount()
-  })
-
    // Auto-refresh using setInterval
    createEffect(() => {
     fetchSubscriberCount(); // Fetch immediately on component mount
@@ -55,7 +51,7 @@ const TARGET_MILESTONE = import.meta.env.VITE_TARGET_SUBSCRIBER_MILESTONE || 0
   {error() ? (
     <p style={{ color: "red" }}>Error: {error()}</p>
   ) : subscriberCount() ? (
-    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(memoCount())} total_progress={TARGET_MILESTONE}/>
+    <MilestoneProgress title= {TITLE_MILESTONE} current_progress={Number(subscriberCount())} total_progress={TARGET_MILESTONE}/>
   ) : (
     <p>Loading...</p>
   )}

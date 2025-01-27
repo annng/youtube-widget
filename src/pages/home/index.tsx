@@ -22,7 +22,7 @@ const HomePage: Component<{}> = (props) => {
         </a>
       </header>
     </div>
-  );;
+  );
 };
 
 export default HomePage;

@@ -1,0 +1,39 @@
+
+.container {
+    position: relative;
+    width: 100vw;
+  }
+
+  .runner {
+    position: absolute;
+    width: 128px; /* Adjust according to the scaled size of the sprite */
+    height: 128px; /* Adjust height based on your sprite dimensions */
+    border: 1px solid blue;
+    background: url('../../assets/img/gorgon_run2.png') no-repeat;
+    background-size: 700%; /* 7 frames in the spritesheet */
+    animation: run 0.5s steps(7) infinite, move 15s linear infinite;
+  }
+
+  @keyframes run {
+    0% {
+      background-position: 0 ;
+    }
+    100% {
+      background-position: -896px; /* Matches background-size to loop frames */
+    }
+  }
+
+  @keyframes move {
+    0% {
+        transform: translateX(0) scaleX(1); /* Starting at the left, facing right */
+      }
+      50% {
+        transform: translateX(calc(100vw - 100px)) scaleX(1); /* At the right edge, still facing right */
+      }
+      51% {
+        transform: translateX(calc(100vw - 100px)) scaleX(-1); /* Flip horizontally, facing left */
+      }
+      100% {
+        transform: translateX(0) scaleX(-1); /* Back at the left, still flipped */
+      }
+  }

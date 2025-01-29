@@ -76,7 +76,7 @@ export default function Sprite(props : SpriteProps) {
           width: "126px",
           height: "126px",
           background: `url(${props.image}) no-repeat`,
-          backgroundSize: "cover",
+          "background-size": "cover",
           transform: `scaleX(${scale()})`,
           }}
         />

@@ -18,7 +18,7 @@ const CommentAvatarPage : Component<{}> = (props) => {
 
     onMount(() => {
         if(param.token != ""){
-            searchChannel(param.token).catch((error) => console.error("Cannot found channel : ", error))
+            broadcastLive(param.token).catch((error) => console.error("Cannot found channel : ", error))
         }
     });
 
